@@ -1,6 +1,7 @@
 package ch.hesge.algo.model;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import static ch.hesge.algo.model.Alignment.EVIL;
 
@@ -27,7 +28,7 @@ public class Villain extends Super {
     }
 
     @Override
-    public Villain getSidekick() {
-        return (Villain) super.getSidekick();
+    public Optional<Villain> getSidekick() {
+        return super.getSidekick();
     }
 }

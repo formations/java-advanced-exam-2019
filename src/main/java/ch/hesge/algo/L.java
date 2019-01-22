@@ -2,6 +2,9 @@ package ch.hesge.algo;
 
 import ch.hesge.algo.model.Group;
 import ch.hesge.algo.model.Super;
+import ch.hesge.algo.model.TransportMode;
+
+import java.util.Comparator;
 
 public class L {
 
@@ -16,6 +19,8 @@ public class L {
      * @param <S> Hero ou Villain
      */
     public <S extends Super> S findFastestMemberOnLand(Group<S> group) {
-        return null;
+        return group.getMembers().stream()
+                .max(Comparator.comparing(s -> s.getSpeed(TransportMode.LAND)))
+                .get();
     }
 }

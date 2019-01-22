@@ -4,6 +4,7 @@ import ch.hesge.algo.model.Super;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class B {
 
@@ -15,6 +16,13 @@ public class B {
      * @param <S>    Hero ou Villain
      */
     public <S extends Super> Collection<S> findSupersWithSidekicks(Collection<S> supers) {
-        return new ArrayList<>();
+        List<S> supersWithSidekick = new ArrayList<>();
+        for (S s : supers) {
+            if (s.getSidekick().isPresent()) {
+                supersWithSidekick.add(s);
+            }
+
+        }
+        return supersWithSidekick;
     }
 }

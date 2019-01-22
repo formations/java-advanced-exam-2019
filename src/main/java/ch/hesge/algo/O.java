@@ -1,6 +1,7 @@
 package ch.hesge.algo;
 
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class O {
 
@@ -10,7 +11,10 @@ public class O {
      * implémenter la série H de la question N
      */
     public double computeSerie(int n) {
-        return 0.0;
+        return Stream.generate(new StatefulSupplier())
+                .limit(n)
+                .mapToDouble(d -> d[1])
+                .sum();
     }
 
     public static class StatefulSupplier implements Supplier<double[]> {
@@ -19,7 +23,9 @@ public class O {
 
         @Override
         public double[] get() {
-            return new double[]{0.0, 0.0}; // A remplacer par l'implémentation correcte
+            double[] value = new double[]{ index, 1.0 / index};
+            index += 1.0;
+            return value;
         }
     }
 }

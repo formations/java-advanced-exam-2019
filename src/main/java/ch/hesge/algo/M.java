@@ -3,6 +3,9 @@ package ch.hesge.algo;
 import ch.hesge.algo.model.Group;
 import ch.hesge.algo.model.Super;
 
+import java.util.Comparator;
+import java.util.stream.Stream;
+
 public class M {
 
     /**
@@ -20,6 +23,8 @@ public class M {
      * @param <S> Hero ou Villain
      */
     public <S extends Super> Group<S> findWinner(Group<S> a, Group<S> b) {
-        return null;
+        return Stream.of(a, b)
+                .max(Comparator.comparing(Group::getPower))
+                .get();
     }
 }

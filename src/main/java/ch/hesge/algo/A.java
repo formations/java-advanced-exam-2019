@@ -15,6 +15,14 @@ public class A {
      * @param <S> Hero ou Villain
      */
     public <S extends Super> Group<S> findGroupWithHighestNumberOfMembers(Collection<Group<S>> groups) {
-        return null;
+        Group groupWithMostMember = null;
+        for (Group group : groups) {
+            if (groupWithMostMember == null) {
+                groupWithMostMember = group;
+            } else if (group.getMembers().size() > groupWithMostMember.getMembers().size()) {
+                groupWithMostMember = group;
+            }
+        }
+        return groupWithMostMember;
     }
 }

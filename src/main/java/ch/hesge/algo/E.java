@@ -20,6 +20,9 @@ public class E {
      * @param <S> Hero ou Villain
      */
     public <S extends Super> Group<S> findWinner(Group<S> a, Group<S> b) {
-        return null;
+        if (a.getPower() >= b.getPower()) {
+            return a;
+        }
+        return b;
     }
 }

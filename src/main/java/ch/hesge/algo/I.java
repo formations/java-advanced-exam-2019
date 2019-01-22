@@ -4,6 +4,7 @@ import ch.hesge.algo.model.Group;
 import ch.hesge.algo.model.Super;
 
 import java.util.Collection;
+import java.util.Comparator;
 
 public class I {
 
@@ -15,6 +16,8 @@ public class I {
      * @param <S> Hero ou Villain
      */
     public <S extends Super> Group<S> findGroupWithHighestNumberOfMembers(Collection<Group<S>> groups) {
-        return null;
+        return groups.stream()
+                .max(Comparator.comparing(g -> g.getMembers().size()))
+                .get();
     }
 }

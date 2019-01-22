@@ -2,6 +2,7 @@ package ch.hesge.algo;
 
 import ch.hesge.algo.model.Group;
 import ch.hesge.algo.model.Super;
+import ch.hesge.algo.model.TransportMode;
 
 public class D {
 
@@ -16,6 +17,14 @@ public class D {
      * @param <S> Hero ou Villain
      */
     public <S extends Super> S findFastestMemberOnLand(Group<S> group) {
-        return null;
+        S fastestSuperOnLand = null;
+        for (S s : group.getMembers()) {
+            if (fastestSuperOnLand == null) {
+                fastestSuperOnLand = s;
+            } else if (s.getSpeed(TransportMode.LAND) > fastestSuperOnLand.getSpeed(TransportMode.LAND)) {
+                fastestSuperOnLand = s;
+            }
+        }
+        return fastestSuperOnLand;
     }
 }

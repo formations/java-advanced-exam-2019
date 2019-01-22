@@ -6,5 +6,5 @@ package ch.hesge.algo;
  * Si le realName est null, alors ils sont les mêmes s'ils ont le même superName.
  */
 public class G {
-
+    // Equals/hashCode
 }

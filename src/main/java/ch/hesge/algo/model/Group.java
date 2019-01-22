@@ -1,8 +1,6 @@
 package ch.hesge.algo.model;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Group<T extends Super> {
 
@@ -29,6 +27,13 @@ public class Group<T extends Super> {
     }
 
     public int getPower() {
-        return 0;
+        int power = 0;
+        List<T> membersByPower = new ArrayList<>(members);
+        membersByPower.sort(Comparator.comparing(Super::getPower));
+        for (int i = 0; i < membersByPower.size(); i++) {
+            double memberPower = ((double) membersByPower.get(i).getPower()) / (i + 1);
+            power += Math.ceil(memberPower);
+        }
+        return power;
     }
 }

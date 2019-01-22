@@ -16,6 +16,8 @@ public class J {
      * @param <S>    Hero ou Villain
      */
     public <S extends Super> Collection<S> findSupersWithSidekicks(Collection<S> supers) {
-        return new ArrayList<>();
+        return supers.stream()
+                .filter(s -> s.getSidekick().isPresent())
+                .collect(Collectors.toList());
     }
 }

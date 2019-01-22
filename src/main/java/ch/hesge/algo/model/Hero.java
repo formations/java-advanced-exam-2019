@@ -2,6 +2,7 @@ package ch.hesge.algo.model;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import static ch.hesge.algo.model.Alignment.GOOD;
 
@@ -28,7 +29,7 @@ public class Hero extends Super {
     }
 
     @Override
-    public Hero getSidekick() {
-        return (Hero) super.getSidekick();
+    public Optional<Hero> getSidekick() {
+        return super.getSidekick();
     }
 }

@@ -4,10 +4,7 @@ import ch.hesge.algo.model.Alignment;
 import ch.hesge.algo.model.Super;
 import ch.hesge.algo.model.Vehicle;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class C {
 
@@ -20,6 +17,18 @@ public class C {
      * le Set des Vehicle qui appartiennent aux Villain.
      */
     public <S extends Super> Map<Alignment, Set<Vehicle>> groupVehiclesByHeroesAndVillains(Collection<S> supers) {
-        return new HashMap<>();
+        Map<Alignment, Set<Vehicle>> vehiclesByAlignment = new HashMap<>();
+        Set<Vehicle> vehiclesForGood = new HashSet<>();
+        Set<Vehicle> vehiclesForEvil = new HashSet<>();
+        vehiclesByAlignment.put(Alignment.GOOD, vehiclesForGood);
+        vehiclesByAlignment.put(Alignment.EVIL, vehiclesForEvil);
+        for (S s : supers) {
+            if (s.getAlignment() == Alignment.GOOD) {
+                vehiclesForGood.addAll(s.getVehicles());
+            } else if (s.getAlignment() == Alignment.EVIL) {
+                vehiclesForEvil.addAll(s.getVehicles());
+            }
+        }
+        return vehiclesByAlignment;
     }
 }

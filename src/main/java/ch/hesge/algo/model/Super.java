@@ -73,7 +73,23 @@ public class Super<S extends Super> {
     }
 
     public int getSpeed(TransportMode mode) {
-        return 0;
+        int intrisicSpeed = 0;
+        for (Move move : moves) {
+            if (move.getMode() == mode) {
+                intrisicSpeed = move.getSpeed();
+                break;
+            }
+        }
+        int vehicleSpeed = 0;
+        out: for (Vehicle vehicle : vehicles) {
+            for (Move move : vehicle.getMoves()) {
+                if (move.getMode() == mode) {
+                    vehicleSpeed = move.getSpeed();
+                    break out;
+                }
+            }
+        }
+        return Math.max(intrisicSpeed, vehicleSpeed);
     }
 
     public String getSuperName() {
